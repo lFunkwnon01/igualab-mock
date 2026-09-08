@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Igualab · Plataforma de Sostenibilidad e Inteligencia</title>
+<link rel="icon" type="image/webp" href="assets/Logo.webp"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary-container": "#1f7a4d",
+        "on-background": "#191c1c",
+        "surface-container-low": "#f2f4f3",
+        "secondary-fixed": "#84f6e6",
+        "surface-tint": "#066c41",
+        "on-secondary-container": "#007167",
+        "on-primary-fixed-variant": "#00522f",
+        "surface-container-high": "#e6e9e8",
+        "on-secondary": "#ffffff",
+        "inverse-on-surface": "#eff1f0",
+        "background": "#f8faf9",
+        "on-tertiary": "#ffffff",
+        "primary": "#006038",
+        "inverse-primary": "#82d8a3",
+        "tertiary-fixed": "#ffdf9f",
+        "error": "#ba1a1a",
+        "on-error-container": "#93000a",
+        "primary-fixed-dim": "#82d8a3",
+        "on-primary": "#ffffff",
+        "on-primary-fixed": "#002110",
+        "surface-variant": "#e1e3e2",
+        "outline": "#6f7a71",
+        "secondary-container": "#84f6e6",
+        "on-primary-container": "#aeffca",
+        "outline-variant": "#bec9bf",
+        "surface-container-lowest": "#ffffff",
+        "on-secondary-fixed-variant": "#005049",
+        "on-surface-variant": "#3f4941",
+        "surface-container": "#eceeed",
+        "error-container": "#ffdad6",
+        "on-tertiary-container": "#ffebc9",
+        "surface-bright": "#f8faf9",
+        "tertiary-fixed-dim": "#f8bd26",
+        "on-tertiary-fixed": "#261a00",
+        "surface": "#f8faf9",
+        "surface-dim": "#d8dada",
+        "on-error": "#ffffff",
+        "secondary-fixed-dim": "#66d9ca",
+        "tertiary": "#6b4f00",
+        "inverse-surface": "#2e3131",
+        "on-secondary-fixed": "#00201d",
+        "on-tertiary-fixed-variant": "#5b4300",
+        "surface-container-highest": "#e1e3e2",
+        "primary-fixed": "#9ef5be",
+        "on-surface": "#191c1c",
+        "secondary": "#006a61",
+        "tertiary-container": "#896600"
+      },
+      borderRadius: {
+        DEFAULT: "0.25rem",
+        lg: "0.5rem",
+        xl: "0.75rem",
+        full: "9999px"
+      },
+      spacing: {
+        xs: "4px",
+        sm: "8px",
+        xl: "32px",
+        lg: "24px",
+        unit: "4px",
+        "sidebar-width": "260px",
+        gutter: "24px",
+        "container-max": "1440px",
+        md: "16px"
+      },
+      fontFamily: {
+        body: ["Inter", "sans-serif"]
+      },
+      fontSize: {
+        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }],
+        "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "600" }],
+        "title-lg": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }]
+      }
+    }
+  }
+};
+</script>
+<link rel="stylesheet" href="css/app.css"/>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+
+  <div id="screen-login" class="hidden min-h-screen flex items-center justify-center p-md sm:p-lg relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-fixed/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary-fixed/20 rounded-full blur-3xl"></div>
+    <div class="w-full max-w-[440px] bg-surface-container-lowest rounded-[16px] border border-surface-variant p-xl shadow-[0_12px_32px_rgba(0,0,0,0.08)] flex flex-col items-center relative z-10">
+      <img src="assets/Logo.webp" alt="Igualab" class="h-12 object-contain mb-lg"/>
+      <h1 class="font-headline-md text-headline-md text-on-background mb-xs text-center">Bienvenido a Igualab</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-xl text-center">Inteligencia de sostenibilidad y prospección</p>
+      <form id="form-login" class="w-full flex flex-col gap-md" novalidate>
+        <div class="flex flex-col gap-xs">
+          <label class="font-label-md text-label-md text-on-surface-variant" for="login-email">Correo electrónico</label>
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-[12px] text-outline-variant text-[20px]">mail</span>
+            <input id="login-email" type="email" autocomplete="username" placeholder="tu@igualab.org"
+              class="w-full h-[48px] pl-[44px] pr-[12px] rounded-xl border border-outline-variant bg-surface-container-lowest text-on-background text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline-variant"/>
+          </div>
+        </div>
+        <div class="flex flex-col gap-xs">
+          <label class="font-label-md text-label-md text-on-surface-variant" for="login-pass">Contraseña</label>
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-[12px] text-outline-variant text-[20px]">lock</span>
+            <input id="login-pass" type="password" autocomplete="current-password" placeholder="••••••••"
+              class="w-full h-[48px] pl-[44px] pr-[44px] rounded-xl border border-outline-variant bg-surface-container-lowest text-on-background text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline-variant"/>
+            <button type="button" id="toggle-pass" class="absolute right-[12px] text-outline-variant hover:text-on-surface-variant transition-colors" aria-label="Mostrar contraseña">
+              <span class="material-symbols-outlined text-[20px]">visibility</span>
+            </button>
+          </div>
+          <div class="flex justify-end mt-sm">
+            <a href="#" id="forgot-pass" class="font-label-md text-label-md text-primary hover:text-surface-tint hover:underline transition-colors">¿Olvidó su contraseña?</a>
+          </div>
+        </div>
+        <div id="login-error" class="hidden rounded-lg bg-error-container text-on-error-container px-md py-sm text-body-md"></div>
+        <button type="submit" class="w-full h-[48px] mt-sm bg-primary text-on-primary rounded-xl text-label-md font-semibold hover:bg-surface-tint active:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-sm">
+          Iniciar sesión
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </form>
+      <div class="w-full my-lg flex items-center gap-md">
+        <div class="flex-1 h-px bg-surface-variant"></div>
+        <span class="font-label-sm text-label-sm text-outline uppercase">Modo demo</span>
+        <div class="flex-1 h-px bg-surface-variant"></div>
+      </div>
+      <div class="w-full grid grid-cols-3 gap-sm">
+        <button data-demo-login="superadmin" class="demo-login-btn flex flex-col items-center gap-xs border border-outline-variant rounded-xl py-sm hover:border-primary hover:bg-primary/5 transition-colors">
+          <span class="material-symbols-outlined text-tertiary">admin_panel_settings</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Superadmin</span>
+        </button>
+        <button data-demo-login="administrador" class="demo-login-btn flex flex-col items-center gap-xs border border-outline-variant rounded-xl py-sm hover:border-primary hover:bg-primary/5 transition-colors">
+          <span class="material-symbols-outlined text-secondary">psychology</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Administrador</span>
+        </button>
+        <button data-demo-login="usuario" class="demo-login-btn flex flex-col items-center gap-xs border border-outline-variant rounded-xl py-sm hover:border-primary hover:bg-primary/5 transition-colors">
+          <span class="material-symbols-outlined text-primary">visibility</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Operativo</span>
+        </button>
+      </div>
+      <a href="#/publico" id="go-public" class="mt-lg font-label-md text-label-md text-secondary hover:underline">Ir al portal público (lectura) →</a>
+    </div>
+  </div>
+
+  <div id="screen-app" class="hidden min-h-screen">
+    <aside id="app-sidebar" class="hidden md:flex flex-col w-[260px] h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant shadow-sm z-20">
+      <div class="px-lg py-lg border-b border-surface-variant flex items-center gap-md">
+        <img src="assets/Logo.webp" alt="Igualab" class="h-9 object-contain"/>
+      </div>
+      <nav class="flex-1 overflow-y-auto py-lg px-sm" id="sidebar-nav"></nav>
+      <div class="border-t border-surface-variant p-lg space-y-sm">
+        <div class="flex items-center gap-md mb-sm">
+          <div id="sidebar-avatar" class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-semibold"></div>
+          <div class="min-w-0">
+            <p id="sidebar-name" class="font-label-md text-label-md text-on-surface font-semibold truncate"></p>
+            <p id="sidebar-role" class="font-label-sm text-label-sm text-on-surface-variant"></p>
+          </div>
+        </div>
+        <a href="#" data-action="logout" class="flex items-center gap-md text-on-surface-variant hover:text-error transition-colors">
+          <span class="material-symbols-outlined">logout</span>
+          <span class="font-body-md text-body-md">Cerrar sesión</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="flex-1 ml-0 md:ml-[260px] min-h-screen flex flex-col bg-background">
+      <header class="flex justify-between items-center w-full px-xl py-sm bg-surface-bright h-16 sticky top-0 z-10 border-b border-surface-variant">
+        <div class="flex items-center gap-lg">
+          <img src="assets/Logo.webp" alt="Igualab" class="h-7 md:hidden object-contain"/>
+          <div class="hidden md:flex items-center bg-surface-container-low rounded-lg px-md py-xs border border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+            <span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+            <input class="bg-transparent border-none focus:ring-0 text-body-md text-on-surface placeholder-outline-variant w-56 outline-none" placeholder="Buscar empresas, reportes..." type="text"/>
+          </div>
+        </div>
+        <div class="flex items-center gap-md">
+          <span id="session-timer" class="hidden lg:inline font-label-sm text-label-sm text-outline"></span>
+          <button class="p-2 text-on-surface-variant hover:text-primary transition-colors relative" aria-label="Notificaciones">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+          </button>
+          <div class="h-8 w-px bg-outline-variant mx-sm"></div>
+          <div class="flex items-center gap-sm">
+            <div id="header-avatar" class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-semibold"></div>
+            <div class="hidden lg:block leading-tight">
+              <p id="header-name" class="font-label-md text-label-md text-on-surface font-semibold"></p>
+              <p id="header-role" class="font-label-sm text-label-sm text-on-surface-variant"></p>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main id="view" class="flex-1 p-lg md:p-xl space-y-xl overflow-y-auto"></main>
+    </div>
+
+    <div id="role-switcher" class="fixed bottom-4 right-4 z-40 p-md bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_12px_32px_rgba(0,0,0,0.12)] w-[230px]">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="material-symbols-outlined text-[16px] text-primary">admin_panel_settings</span>
+        <span class="font-label-sm text-label-sm font-bold text-on-surface">Modo Demo · Cambiar rol</span>
+      </div>
+      <select id="role-select" class="w-full bg-surface border border-outline-variant rounded-lg px-2 py-1.5 text-xs text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+        <option value="superadmin">🟡 Superadmin (Gestión)</option>
+        <option value="administrador">🟢 Administrador (Análisis)</option>
+        <option value="usuario">🔵 Usuario Operativo (Lectura)</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="screen-public" class="hidden min-h-screen bg-background"></div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root" class="fixed top-4 left-1/2 -translate-x-1/2 z-[60] space-y-sm w-full max-w-md px-4"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils/helpers.js"></script>
+  <script src="js/utils/charts.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/badges.js"></script>
+  <script src="js/components/cards.js"></script>
+  <script src="js/components/report.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/usuarios.js"></script>
+  <script src="js/views/config.js"></script>
+  <script src="js/views/auditoria.js"></script>
+  <script src="js/views/ingesta.js"></script>
+  <script src="js/views/ia.js"></script>
+  <script src="js/views/reportes.js"></script>
+  <script src="js/views/descargas.js"></script>
+  <script src="js/views/bolsa.js"></script>
+  <script src="js/views/linkedin.js"></script>
+  <script src="js/views/publico.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
